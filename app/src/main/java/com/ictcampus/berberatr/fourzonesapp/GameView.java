@@ -38,7 +38,7 @@ public class GameView extends View implements Runnable {
     private Rect rectBottomLeft;
     private Rect rectBottomRight;
     private Rect userRect;
-    boolean touched, hit;
+    boolean touched, hit, start;
     private int[] colors = new int[]{Color.BLACK, Color.GREEN, Color.RED, Color.BLUE, Color.YELLOW};
     private int rTLRandomColor, rTRRandomColor, rBLRandomColor, rBRRandomColor, userColor;
     private final int STROKESIZE = 10;
@@ -64,7 +64,7 @@ public class GameView extends View implements Runnable {
         rectangle.getPaint().setColor(colors[rTLRandomColor]);
         rectangle.getPaint().setStyle(Paint.Style.STROKE);
         rectangle.getPaint().setStrokeWidth(STROKESIZE);
-        rectTopLeft = new Rect((int) rectsXPos, (int) rectsYPos, width - STROKESIZE / 2, height - STROKESIZE / 2);
+        rectTopLeft = new Rect((int) rectsXPos, (int)rectsYPos, width - STROKESIZE / 2, height - STROKESIZE / 2);
         rectangle.setBounds(rectTopLeft);
         rectTopLeft = rectangle.getBounds();
         rectangle.draw(canvas);
@@ -99,7 +99,7 @@ public class GameView extends View implements Runnable {
     @Override
     public void run() {
         int[] randomNumbers = new int[4];
-        int speed = 12;
+        int speed = 9;
         int difficultySpeed = 50;
         while (hit) {
             if (rectsXPos < 10) {
@@ -123,19 +123,17 @@ public class GameView extends View implements Runnable {
                 if (hit) {
                     counter++;
                     Log.d("Counter", Integer.toString(counter));
-
                     if (counter < 44) {
                         difficultySpeed = (int) ((-1 / (50 / (Math.pow(counter, 2)))) + 50);
                     } else {
                         difficultySpeed = 10;
                     }
-
                     //Reset position of rectangles.
                     rectsXPos = width;
                     rectsYPos = height;
 
                     //Reset speed
-                    speed = 12;
+                    speed = 9;
 
                     //random Colors
                     rTLRandomColor = (int) (Math.random() * colors.length);
@@ -148,26 +146,42 @@ public class GameView extends View implements Runnable {
                     randomNumbers[3] = rBRRandomColor;
                     userColor = (int) (Math.random() * randomNumbers.length);
                     userColor = randomNumbers[userColor];
+
                 } else {
                     scale = 200;
                 }
+
                 ob = new BitmapDrawable(getResources(), textAsBitmap(Integer.toString(counter), 300, Color.BLACK, scale));
             }
 
+            //for starting countdown
+            if(start){
+                if (rectsXPos < (width/3)) {
+                    ob = new BitmapDrawable(getResources(), textAsBitmap("0", 300, Color.BLACK, scale));
+                    speed = 34;
+                    start = false;
+                } else if (rectsXPos < (width/3 *2)) {
+                    ob = new BitmapDrawable(getResources(), textAsBitmap("1", 300, Color.BLACK, scale));
+                    speed = 26;
+                } else if (rectsXPos < (width- 100)) {
+                    speed = 17;
+                    ob = new BitmapDrawable(getResources(), textAsBitmap("2", 300, Color.BLACK, scale));
+                }
+            }
             //adapt speed
             if (rectsXPos < 350) {
-                speed = 48;
+                speed = 34;
             } else if (rectsXPos < 550) {
-                speed = 36;
+                speed = 26;
             } else if (rectsXPos < 700) {
-                speed = 24;
+                speed = 17;
             } else if (rectsXPos < 900) {
-                speed = 18;
+                speed = 13;
             }
 
             //set new values for rects
-            rectsXPos = rectsXPos - speed;
-            rectsYPos = rectsYPos - (speed - speed / 3);
+            rectsXPos = rectsXPos - (int)(((double)width/(double)height)*speed);
+            rectsYPos = rectsYPos - speed;
 
             postInvalidate();
 
@@ -210,6 +224,7 @@ public class GameView extends View implements Runnable {
     public void newRound(int userRectPosX, int userRectPosY) {
         touched = true;
         hit = true;
+        start = true;
 
         rectsXPos = width;
         rectsYPos = height;
@@ -227,11 +242,8 @@ public class GameView extends View implements Runnable {
         paint = new Paint(Color.BLACK);
         rectangle = new ShapeDrawable(new RectShape());
         thread = new Thread(this);
-        ob = new BitmapDrawable(getResources(), textAsBitmap(Integer.toString(counter), 300, Color.BLACK, scale));
-    }
 
-    public int ggt(int a, int b) {
-        return (b == 0) ? a : ggt(b, a%b);
+        ob = new BitmapDrawable(getResources(), textAsBitmap("3", 300, Color.BLACK, scale));
     }
 
     public Thread getThread() {
