@@ -7,4 +7,17 @@
     tools:context="com.ictcampus.berberatr.fourzonesapp.Game_Activity"
     android:id="@+id/layoutGame">
 
+    <Button
+        android:id="@+id/restartGameButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Restart" />
+
+    <Button
+        android:id="@+id/leaderBoardButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Leaderboard" />
 </LinearLayout>
