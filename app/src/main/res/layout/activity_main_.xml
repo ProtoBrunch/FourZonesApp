@@ -8,32 +8,40 @@
     android:weightSum="1"
     >
 
-<Button
-    android:layout_width="200dp"
-    android:layout_height="wrap_content"
-    android:text="Start Game"
-    android:id="@+id/btn1"
-    android:layout_marginTop="80dp"
-    android:onClick="startGame"
-    />
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Start Game"
+        android:id="@+id/btn1"
+        android:layout_marginTop="80dp"
+        android:onClick="startGame"
+        />
 
-<Button
-    android:layout_width="200dp"
-    android:layout_height="wrap_content"
-    android:text="View Data"
-    android:id="@+id/btn2"
-    android:layout_marginTop="80dp"
-    android:onClick="viewData"
-    />
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="View Data"
+        android:id="@+id/btn2"
+        android:layout_marginTop="80dp"
+        android:onClick="viewData"
+        />
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:id="@+id/btn3"
+        android:layout_marginTop="80dp"
+        android:onClick="viewSettings"
+        />
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="No Network Found"
-    android:id="@+id/txtView1"
-    android:layout_gravity="center_horizontal"
-    android:layout_marginTop="30dp"
-    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Network Found"
+        android:id="@+id/txtView1"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        />
 
 
 </LinearLayout>
