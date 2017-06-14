@@ -11,14 +11,17 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 
 public class Game_Activity extends AppCompatActivity{
     private GameView view;
-    Button buttonStart, buttonStop;
+    Button buttonStart, buttonStop, buttonSubmit;
     TextView tvScore, tvSample;
+    EditText etName;
     boolean something;
     ProgressDialog pG;
 
@@ -50,6 +53,9 @@ public class Game_Activity extends AppCompatActivity{
                 break;
             case MotionEvent.ACTION_UP:
                 pG.show();
+                setContentView(R.layout.activity_game_);
+                buttonSubmit = (Button)findViewById(R.id.buttonSubmit);
+                etName = (EditText) findViewById(R.id.etName);
                 try {
                     new checkIfNewHighscore(view.getCounter(), new AsyncResponse() {
                         @Override
@@ -59,8 +65,16 @@ public class Game_Activity extends AppCompatActivity{
                             tvSample = (TextView)findViewById(R.id.tvNewHighscore);
                             if(output){
                                 tvSample.setText("You've reached a new Highscore!");
+                                buttonSubmit.setVisibility(View.VISIBLE);
+                                buttonSubmit.setEnabled(true);
+                                etName.setVisibility(View.VISIBLE);
+                                etName.setEnabled(true);
                             }else{
                                 tvSample.setText("No new Highscore");
+                                buttonSubmit.setVisibility(View.INVISIBLE);
+                                buttonSubmit.setEnabled(false);
+                                etName.setVisibility(View.INVISIBLE);
+                                etName.setEnabled(false);
                             }
                         }
                     }).execute();
@@ -71,7 +85,7 @@ public class Game_Activity extends AppCompatActivity{
                 view.setTouched(false);
                 view.setHit(false);
                 view.postInvalidate();
-                setContentView(R.layout.activity_game_);
+
                 buttonStart = (Button) findViewById(R.id.restartGameButton);
                 buttonStop = (Button) findViewById(R.id.leaderBoardButton);
                 tvScore = (TextView)findViewById(R.id.tvScore);
@@ -84,7 +98,7 @@ public class Game_Activity extends AppCompatActivity{
         return true;
     }
 
-    private void setListener(){
+    private void setListener() {
         buttonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,14 +107,29 @@ public class Game_Activity extends AppCompatActivity{
             }
         });
 
-        buttonStop.setOnClickListener( new View.OnClickListener() {
+        buttonStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), GetData.class);
                 startActivity(intent);
             }
         });
+
+
+        buttonSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new SendData(etName.getText().toString(), view.getCounter(), new AsyncResponse() {
+                    @Override
+                    public void processFinish(Boolean output) {
+                        Toast.makeText(getApplicationContext(), "Score Submitted", Toast.LENGTH_SHORT).show();
+                    }
+                }).execute();
+                buttonSubmit.setEnabled(false);
+            }
+        });
     }
+
 
     private void setupPG(){
         pG = new ProgressDialog(this);
