@@ -1,6 +1,7 @@
 package com.ictcampus.berberatr.fourzonesapp;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -17,6 +18,8 @@ import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by meiersila on 18.05.2017.
@@ -39,7 +42,7 @@ public class GameView extends View implements Runnable {
     private Rect rectBottomRight;
     private Rect userRect;
     boolean touched, hit, start;
-    private int[] colors = new int[]{Color.BLACK, Color.GREEN, Color.RED, Color.BLUE, Color.YELLOW};
+    private int[] colors;
     private int rTLRandomColor, rTRRandomColor, rBLRandomColor, rBRRandomColor, userColor;
     private final int STROKESIZE = 10;
 
@@ -52,6 +55,16 @@ public class GameView extends View implements Runnable {
         display.getSize(size);
         width = size.x / 2;
         height = size.y / 2;
+
+        SharedPreferences prefs = context.getSharedPreferences("MyPref", 0);
+        boolean colorBlind = prefs.getBoolean("colorBlind", false);
+        if (colorBlind) {
+            //TODO: add colorblind friendly colors.
+            colors = context.getResources().getIntArray(R.array.colorBlind);
+        }else{
+            colors = context.getResources().getIntArray(R.array.normal);
+
+        }
 
         newRound(150, 150);
     }
@@ -151,8 +164,8 @@ public class GameView extends View implements Runnable {
 
                 } else {
                     scale = 200;
+                    counter--;
                 }
-
                 ob = new BitmapDrawable(getResources(), textAsBitmap(Integer.toString(counter), 300, Color.BLACK, scale));
             }
 

@@ -39,4 +39,8 @@ public class Main_Activity extends Activity {
     public void viewData(View view){
         startActivity(new Intent(this, GetData.class));
     }
+
+    public void viewSettings(View view){
+        startActivity(new Intent(this, Settings_Activity.class));
+    }
 }

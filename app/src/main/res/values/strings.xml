@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FourZonesApp</string>
+
+    <string name="title_activity_settings_">Settings_Activity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
