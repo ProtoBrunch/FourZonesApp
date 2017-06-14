@@ -24,7 +24,7 @@ public class Main_Activity extends Activity {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo nwi = cm.getActiveNetworkInfo();
         if(nwi != null && nwi.isConnected()){
-            
+
         }
         else{
             btn1.setEnabled(false);
