@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ictcampus.berberatr.fourzonesapp.AddData"
+    android:orientation="vertical"
+    >
+
+<EditText
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:hint="Enter Name"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="50dp"
+    android:id="@+id/et_name"
+    />
+
+<EditText
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:hint="Enter Email"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="50dp"
+    android:id="@+id/et_email"
+    android:inputType="textEmailAddress"
+    />
+
+<EditText
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:hint="Enter Phone"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="50dp"
+    android:id="@+id/et_phone"
+    android:inputType="phone"
+    />
+
+<Button
+    android:layout_width="170dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:text="Send Data"
+    android:layout_marginTop="30dp"
+    android:onClick="sendInfo"
+    />
+
+</LinearLayout>
+
