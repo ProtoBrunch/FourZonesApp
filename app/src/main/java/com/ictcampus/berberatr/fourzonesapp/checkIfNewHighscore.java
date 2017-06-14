@@ -60,7 +60,7 @@ public class checkIfNewHighscore extends AsyncTask<String, Void ,Boolean>{
 
         while(it.hasNext()){
             String[] temp = (String[])it.next();
-            if((parseInt(temp[1]) < score)){
+            if((parseInt(temp[1]) <= score)){
                 return true;
             }
         }
