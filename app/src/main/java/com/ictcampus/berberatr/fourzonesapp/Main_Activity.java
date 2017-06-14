@@ -21,11 +21,10 @@ public class Main_Activity extends Activity {
         setContentView(R.layout.activity_main_);
         btn1 = (Button) findViewById(R.id.btn1);
         btn2 = (Button) findViewById(R.id.btn2);
-        txtView1 = (TextView)findViewById(R.id.txtView1);
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo nwi = cm.getActiveNetworkInfo();
         if(nwi != null && nwi.isConnected()){
-            txtView1.setVisibility(View.INVISIBLE);
+            
         }
         else{
             btn1.setEnabled(false);
