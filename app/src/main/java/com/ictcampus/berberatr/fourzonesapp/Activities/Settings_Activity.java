@@ -1,10 +1,12 @@
-package com.ictcampus.berberatr.fourzonesapp;
+package com.ictcampus.berberatr.fourzonesapp.Activities;
 
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.CompoundButton;
 import android.widget.ToggleButton;
+
+import com.ictcampus.berberatr.fourzonesapp.R;
 
 public class Settings_Activity extends AppCompatActivity {
 

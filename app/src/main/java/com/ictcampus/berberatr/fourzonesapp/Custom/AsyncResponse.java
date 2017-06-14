@@ -1,4 +1,4 @@
-package com.ictcampus.berberatr.fourzonesapp;
+package com.ictcampus.berberatr.fourzonesapp.Custom;
 
 /**
  * Created by berberatr on 14.06.2017.

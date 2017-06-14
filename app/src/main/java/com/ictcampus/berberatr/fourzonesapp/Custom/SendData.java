@@ -1,7 +1,6 @@
-package com.ictcampus.berberatr.fourzonesapp;
+package com.ictcampus.berberatr.fourzonesapp.Custom;
 
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
