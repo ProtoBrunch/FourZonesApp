@@ -96,7 +96,6 @@ public class Game_Activity extends AppCompatActivity{
         buttonStop.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: send counter with intent
                 Intent intent = new Intent(v.getContext(), GetData.class);
                 startActivity(intent);
             }
