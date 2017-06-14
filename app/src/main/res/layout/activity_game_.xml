@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:screenOrientation="landscape"
-    tools:context="com.ictcampus.berberatr.fourzonesapp.Game_Activity"
+    tools:context="com.ictcampus.berberatr.fourzonesapp.Activities.Game_Activity"
     android:id="@+id/layoutGame"
     android:rowCount="3"
     android:columnCount="2">

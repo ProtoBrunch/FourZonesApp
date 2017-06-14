@@ -1,4 +1,4 @@
-package com.ictcampus.berberatr.fourzonesapp;
+package com.ictcampus.berberatr.fourzonesapp.Activities;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -14,6 +14,9 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.ictcampus.berberatr.fourzonesapp.R;
+import com.ictcampus.berberatr.fourzonesapp.Custom.turnStringIntoArrayList;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -27,7 +30,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 
-public class GetData extends Activity {
+public class Highscore_Activity extends Activity {
     ProgressDialog progress;
 
 

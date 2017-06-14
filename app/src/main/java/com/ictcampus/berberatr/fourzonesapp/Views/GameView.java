@@ -1,4 +1,4 @@
-package com.ictcampus.berberatr.fourzonesapp;
+package com.ictcampus.berberatr.fourzonesapp.Views;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -18,6 +18,8 @@ import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
+
+import com.ictcampus.berberatr.fourzonesapp.R;
 
 import static android.content.Context.MODE_PRIVATE;
 

@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme"
         android:windowActionBar="false">
         <activity
-            android:name=".Main_Activity"
+            android:name=".Activities.Main_Activity"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,16 +23,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddData"
+            android:name=".Activities.Highscore_Activity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".GetData"
+            android:name=".Activities.Game_Activity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".Game_Activity"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".Settings_Activity"
+            android:name=".Activities.Settings_Activity"
             android:screenOrientation="landscape"/>
     </application>
 

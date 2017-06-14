@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ictcampus.berberatr.fourzonesapp.Settings_Activity"
+    tools:context="com.ictcampus.berberatr.fourzonesapp.Activities.Settings_Activity"
     android:gravity="center_horizontal"
     android:weightSum="1"
     >

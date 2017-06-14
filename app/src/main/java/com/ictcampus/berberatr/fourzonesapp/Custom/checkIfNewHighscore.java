@@ -1,8 +1,7 @@
-package com.ictcampus.berberatr.fourzonesapp;
+package com.ictcampus.berberatr.fourzonesapp.Custom;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;

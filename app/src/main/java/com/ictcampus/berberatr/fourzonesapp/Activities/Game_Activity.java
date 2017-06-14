@@ -1,11 +1,9 @@
-package com.ictcampus.berberatr.fourzonesapp;
+package com.ictcampus.berberatr.fourzonesapp.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -14,6 +12,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.ictcampus.berberatr.fourzonesapp.Custom.AsyncResponse;
+import com.ictcampus.berberatr.fourzonesapp.Views.GameView;
+import com.ictcampus.berberatr.fourzonesapp.R;
+import com.ictcampus.berberatr.fourzonesapp.Custom.SendData;
+import com.ictcampus.berberatr.fourzonesapp.Custom.checkIfNewHighscore;
 
 import java.io.IOException;
 
@@ -110,7 +114,7 @@ public class Game_Activity extends AppCompatActivity{
         buttonStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), GetData.class);
+                Intent intent = new Intent(v.getContext(), Highscore_Activity.class);
                 startActivity(intent);
             }
         });
