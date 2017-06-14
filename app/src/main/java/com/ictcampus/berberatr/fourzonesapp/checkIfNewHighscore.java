@@ -1,6 +1,8 @@
 package com.ictcampus.berberatr.fourzonesapp;
 
+import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,19 +20,17 @@ import static java.lang.Integer.parseInt;
  * Created by berberatr on 14.06.2017.
  */
 
-public class checkIfNewHighscore {
+public class checkIfNewHighscore extends AsyncTask<String, Void ,Boolean>{
     int score;
     String scoreString;
     StringBuilder stringBuilder = new StringBuilder();
     ArrayList<String[]> scoreList;
+    boolean newScore;
+    public AsyncResponse delegate = null;
 
-    public  checkIfNewHighscore(int score) throws IOException{
+    public  checkIfNewHighscore(int score, AsyncResponse delegate) throws IOException{
         this.score = score;
-        readString(establishConnection());
-        turnStringIntoArrayList tsial = new turnStringIntoArrayList(scoreString);
-        scoreList = tsial.getArrayList();
-        boolean newScore = checkAndCompareScores();
-        Log.d("NewScore?", Boolean.toString(newScore));
+        this.delegate = delegate;
     }
 
     public BufferedReader establishConnection()throws IOException{
@@ -65,5 +65,27 @@ public class checkIfNewHighscore {
             }
         }
         return false;
+    }
+
+    @Override
+    protected Boolean doInBackground(String... params) {
+        try {
+            readString(establishConnection());
+            turnStringIntoArrayList tsial = new turnStringIntoArrayList(scoreString);
+            scoreList = tsial.getArrayList();
+            newScore = checkAndCompareScores();
+            return newScore;
+        }catch(IOException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    protected void onPostExecute(Boolean aBoolean) {
+        super.onPostExecute(aBoolean);
+        Log.d("NewScore?", Boolean.toString(aBoolean));
+        delegate.processFinish(aBoolean);
+
     }
 }
