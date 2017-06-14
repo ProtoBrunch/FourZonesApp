@@ -21,10 +21,6 @@ import android.view.WindowManager;
 
 import static android.content.Context.MODE_PRIVATE;
 
-/**
- * Created by meiersila on 18.05.2017.
- */
-
 public class GameView extends View implements Runnable {
     private ShapeDrawable rectangle;
     private Drawable ob;
@@ -59,7 +55,6 @@ public class GameView extends View implements Runnable {
         SharedPreferences prefs = context.getSharedPreferences("MyPref", 0);
         boolean colorBlind = prefs.getBoolean("colorBlind", false);
         if (colorBlind) {
-            //TODO: add colorblind friendly colors.
             colors = context.getResources().getIntArray(R.array.colorBlind);
         }else{
             colors = context.getResources().getIntArray(R.array.normal);

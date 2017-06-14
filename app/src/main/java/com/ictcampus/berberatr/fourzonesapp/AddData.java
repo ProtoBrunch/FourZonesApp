@@ -13,7 +13,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
@@ -38,21 +37,20 @@ public class AddData extends Activity {
         backgroundTask.execute(strName,strEmail,strPhone);
     }
 
-    class BackgroundTask extends AsyncTask<String, Void, String> {
+    private class BackgroundTask extends AsyncTask<String, Void, String> {
         String add_data_url;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            add_data_url = "https://fourzones.000webhostapp.com/add_info.php";
+            add_data_url = "https://fourzones.000webhostapp.com/add_highscore.php";
         }
 
         @Override
         protected String doInBackground(String... args) {
-            String name, email, phone;
+            String name, score;
             name = args[0];
-            email = args[1];
-            phone = args[2];
+            score = args[1];
 
             try {
                 URL url = new URL(add_data_url);
@@ -64,8 +62,7 @@ public class AddData extends Activity {
 
                 String data_string =
                         URLEncoder.encode("name", "UTF-8") + "=" +  URLEncoder.encode(name, "UTF-8") + "&" +
-                                URLEncoder.encode("email", "UTF-8") + "=" +  URLEncoder.encode(email, "UTF-8") + "&" +
-                                URLEncoder.encode("phone", "UTF-8") + "=" +  URLEncoder.encode(phone, "UTF-8");
+                                URLEncoder.encode("score", "UTF-8") + "=" +  URLEncoder.encode(score, "UTF-8");
 
                 writer.write(data_string);
                 writer.flush();
@@ -76,9 +73,7 @@ public class AddData extends Activity {
                 httpURLConnection.disconnect();
                 return "Data transmitted.";
 
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
+            }catch (IOException e) {
                 e.printStackTrace();
             }
             return null;
