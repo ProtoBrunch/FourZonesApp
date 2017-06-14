@@ -89,7 +89,9 @@ public class GameView extends View implements Runnable {
 
         if (touched) {
             rectangle.getPaint().setColor(colors[userColor]);
-            userRect = new Rect((int) touchX - 25, (int) touchY - 25, (int) touchX + 25, (int) touchY + 25);
+            rectangle.getPaint().setStyle(Paint.Style.FILL_AND_STROKE);
+            int size = 100;
+            userRect = new Rect((int) touchX - size, (int) touchY - size, (int) touchX + size, (int) touchY + size);
             rectangle.setBounds(userRect);
             userRect = rectangle.getBounds();
             rectangle.draw(canvas);
@@ -156,7 +158,7 @@ public class GameView extends View implements Runnable {
 
             //for starting countdown
             if(start){
-                if (rectsXPos < (width/3)) {
+                if (rectsXPos < (width/3+100)) {
                     ob = new BitmapDrawable(getResources(), textAsBitmap("0", 300, Color.BLACK, scale));
                     speed = 34;
                     start = false;
