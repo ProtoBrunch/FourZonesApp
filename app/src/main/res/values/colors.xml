@@ -22,12 +22,12 @@
     <color name="gray">#9e9e9e</color>
 
     <array name="normal">
-        <item>@color/bright_pink</item>
         <item>@color/red</item>
         <item>@color/orange</item>
         <item>@color/green</item>
         <item>@color/cyan</item>
         <item>@color/blue</item>
+        <item>@color/gray</item>
     </array>
 
     <array name="colorBlind">
