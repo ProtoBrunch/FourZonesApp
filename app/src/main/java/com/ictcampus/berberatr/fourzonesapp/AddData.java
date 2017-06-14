@@ -13,7 +13,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
@@ -38,7 +37,7 @@ public class AddData extends Activity {
         backgroundTask.execute(strName,strEmail,strPhone);
     }
 
-    class BackgroundTask extends AsyncTask<String, Void, String> {
+    private class BackgroundTask extends AsyncTask<String, Void, String> {
         String add_data_url;
 
         @Override
@@ -74,9 +73,7 @@ public class AddData extends Activity {
                 httpURLConnection.disconnect();
                 return "Data transmitted.";
 
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
+            }catch (IOException e) {
                 e.printStackTrace();
             }
             return null;
