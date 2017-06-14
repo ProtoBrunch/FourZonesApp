@@ -19,6 +19,7 @@
     <color name="violet">#7F00FF</color>
     <color name="magenta">#FF00FF</color>
     <color name="black">#000000</color>
+    <color name="gray">#9e9e9e</color>
 
     <array name="normal">
         <item>@color/bright_pink</item>
@@ -35,6 +36,6 @@
         <item>@color/orange</item>
         <item>@color/green</item>
         <item>@color/blue</item>
-        <item>@color/magenta</item>
+        <item>@color/gray</item>
     </array>
 </resources>
