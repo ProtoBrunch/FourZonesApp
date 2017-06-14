@@ -44,15 +44,14 @@ public class AddData extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            add_data_url = "https://fourzones.000webhostapp.com/add_info.php";
+            add_data_url = "https://fourzones.000webhostapp.com/add_highscore.php";
         }
 
         @Override
         protected String doInBackground(String... args) {
-            String name, email, phone;
+            String name, score;
             name = args[0];
-            email = args[1];
-            phone = args[2];
+            score = args[1];
 
             try {
                 URL url = new URL(add_data_url);
@@ -64,8 +63,7 @@ public class AddData extends Activity {
 
                 String data_string =
                         URLEncoder.encode("name", "UTF-8") + "=" +  URLEncoder.encode(name, "UTF-8") + "&" +
-                                URLEncoder.encode("email", "UTF-8") + "=" +  URLEncoder.encode(email, "UTF-8") + "&" +
-                                URLEncoder.encode("phone", "UTF-8") + "=" +  URLEncoder.encode(phone, "UTF-8");
+                                URLEncoder.encode("score", "UTF-8") + "=" +  URLEncoder.encode(score, "UTF-8");
 
                 writer.write(data_string);
                 writer.flush();

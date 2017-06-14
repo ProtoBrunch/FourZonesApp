@@ -1,6 +1,7 @@
 package com.ictcampus.berberatr.fourzonesapp;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -27,11 +28,14 @@ import java.util.Iterator;
 
 
 public class GetData extends Activity {
+    ProgressDialog progress;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initProgressDialog();
+        progress.show();
         setContentView(R.layout.activity_get_data);
         new BackgroundTask().execute();
     }
@@ -48,7 +52,7 @@ public class GetData extends Activity {
         protected View doInBackground(String... params) {
             try{
                 String authkey = URLEncoder.encode("authkey" , "UTF-8")+ "=" + URLEncoder.encode(AUTHKEY, "UTF-8");
-                URL url = new URL("https://fourzones.000webhostapp.com/get_info.php");
+                URL url = new URL("https://fourzones.000webhostapp.com/get_highscore.php");
                 URLConnection connection = url.openConnection();
                 connection.setDoOutput(true);
                 OutputStreamWriter outputStreamWriter = new OutputStreamWriter(connection.getOutputStream());
@@ -80,6 +84,7 @@ public class GetData extends Activity {
         @Override
         protected void onPostExecute(View v) {
             super.onPostExecute(v);
+            progress.dismiss();
             setContentView(v);
             Log.d("Check" , "Set content view");
         }
@@ -123,11 +128,10 @@ public class GetData extends Activity {
 
             //Create the third Textview
             TextView textViewThree = new TextView(this);
-            textViewThree.setText(temp[2]);
+            textViewThree.setText(temp[1]);
             textViewThree.setGravity(Gravity.END);
             textViewThree.setLayoutParams(param);
             textViewThree.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
-
 
             // add TextViews to the Tablerow
             tableRow.addView(textViewOne);
@@ -144,6 +148,13 @@ public class GetData extends Activity {
         // Display the View
         rank = 1;
         return view;
+    }
+
+    private void initProgressDialog(){
+        progress = new ProgressDialog(this);
+        progress.setTitle("Loading Highscore-Data");
+        progress.setMessage("Please Stand By.");
+        progress.setCancelable(false);
     }
 }
 
