@@ -159,11 +159,12 @@ public class GameView extends View implements Runnable {
                     userColor = (int) (Math.random() * randomNumbers.length);
                     userColor = randomNumbers[userColor];
 
+                    ob = new BitmapDrawable(getResources(), textAsBitmap(Integer.toString(counter), 300, Color.BLACK, scale));
                 } else {
                     scale = 200;
                     counter--;
                 }
-                ob = new BitmapDrawable(getResources(), textAsBitmap(Integer.toString(counter), 300, Color.BLACK, scale));
+
             }
 
             //for starting countdown
