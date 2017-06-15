@@ -79,7 +79,11 @@ public class Game_Activity extends AppCompatActivity{
                                     etName.setVisibility(View.VISIBLE);
                                     etName.setEnabled(true);
                                 } else {
-                                    tvSample.setText("No new Highscore");
+                                    if((int) (Math.random() * 10)+1== 10) {
+                                        tvSample.setText("Git gud");
+                                    }else{
+                                        tvSample.setText("No new Highscore");
+                                    }
                                     buttonSubmit.setVisibility(View.INVISIBLE);
                                     buttonSubmit.setEnabled(false);
                                     etName.setVisibility(View.INVISIBLE);
