@@ -27,6 +27,7 @@ public class Game_Activity extends AppCompatActivity{
     TextView tvScore, tvSample;
     EditText etName;
     boolean something;
+    boolean clickedNewGame;
     ProgressDialog pG;
 
     @Override
@@ -36,6 +37,7 @@ public class Game_Activity extends AppCompatActivity{
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setupPG();
+        clickedNewGame = true;
         view = new GameView(this);
         setContentView(view);
     }
@@ -43,61 +45,64 @@ public class Game_Activity extends AppCompatActivity{
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         int action = event.getActionMasked();
-        switch (action) {
-            case MotionEvent.ACTION_DOWN:
-                view.newRound((int)event.getX(),(int)event.getY() );
-                if(!view.getThread().isAlive()){
-                    view.getThread().start();
-                }
-                view.postInvalidate();
-                break;
-            case MotionEvent.ACTION_MOVE:
-                view.setTouchY(event.getY());
-                view.setTouchX(event.getX());
-                break;
-            case MotionEvent.ACTION_UP:
-                pG.show();
-                setContentView(R.layout.activity_game_);
-                buttonSubmit = (Button)findViewById(R.id.buttonSubmit);
-                etName = (EditText) findViewById(R.id.etName);
-                try {
-                    new checkIfNewHighscore(view.getCounter(), new AsyncResponse() {
-                        @Override
-                        public void processFinish(Boolean output) {
-                            something = output;
-                            pG.dismiss();
-                            tvSample = (TextView)findViewById(R.id.tvNewHighscore);
-                            if(output){
-                                tvSample.setText("You've reached a new Highscore!");
-                                buttonSubmit.setVisibility(View.VISIBLE);
-                                buttonSubmit.setEnabled(true);
-                                etName.setVisibility(View.VISIBLE);
-                                etName.setEnabled(true);
-                            }else{
-                                tvSample.setText("No new Highscore");
-                                buttonSubmit.setVisibility(View.INVISIBLE);
-                                buttonSubmit.setEnabled(false);
-                                etName.setVisibility(View.INVISIBLE);
-                                etName.setEnabled(false);
+        if(clickedNewGame) {
+            switch (action) {
+                case MotionEvent.ACTION_DOWN:
+                    view.newRound((int) event.getX(), (int) event.getY());
+                    if (!view.getThread().isAlive()) {
+                        view.getThread().start();
+                    }
+                    view.postInvalidate();
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    view.setTouchY(event.getY());
+                    view.setTouchX(event.getX());
+                    break;
+                case MotionEvent.ACTION_UP:
+                    pG.show();
+
+                    setContentView(R.layout.activity_game_);
+
+                    buttonSubmit = (Button) findViewById(R.id.buttonSubmit);
+                    etName = (EditText) findViewById(R.id.etName);
+                    try {
+                        new checkIfNewHighscore(view.getCounter(), new AsyncResponse() {
+                            @Override
+                            public void processFinish(Boolean output) {
+                                something = output;
+                                pG.dismiss();
+                                tvSample = (TextView) findViewById(R.id.tvNewHighscore);
+                                if (output) {
+                                    tvSample.setText("You've reached a new Highscore!");
+                                    buttonSubmit.setVisibility(View.VISIBLE);
+                                    buttonSubmit.setEnabled(true);
+                                    etName.setVisibility(View.VISIBLE);
+                                    etName.setEnabled(true);
+                                } else {
+                                    tvSample.setText("No new Highscore");
+                                    buttonSubmit.setVisibility(View.INVISIBLE);
+                                    buttonSubmit.setEnabled(false);
+                                    etName.setVisibility(View.INVISIBLE);
+                                    etName.setEnabled(false);
+                                }
                             }
-                        }
-                    }).execute();
+                        }).execute();
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                view.setTouched(false);
-                view.setHit(false);
-                view.postInvalidate();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
-                buttonStart = (Button) findViewById(R.id.restartGameButton);
-                buttonStop = (Button) findViewById(R.id.leaderBoardButton);
-                tvScore = (TextView)findViewById(R.id.tvScore);
-                tvScore.setText(Integer.toString(view.getCounter()));
-                setListener();
-                break;
-            case MotionEvent.ACTION_CANCEL:
-                break;
+                    buttonStart = (Button) findViewById(R.id.restartGameButton);
+                    buttonStop = (Button) findViewById(R.id.leaderBoardButton);
+                    tvScore = (TextView) findViewById(R.id.tvScore);
+                    tvScore.setText(Integer.toString(view.getCounter()));
+
+                    setListener();
+                    clickedNewGame = false;
+                    break;
+                case MotionEvent.ACTION_CANCEL:
+                    break;
+            }
         }
         return true;
     }
@@ -106,6 +111,7 @@ public class Game_Activity extends AppCompatActivity{
         buttonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                clickedNewGame = true;
                 view = new GameView(v.getContext());
                 setContentView(view);
             }
@@ -118,7 +124,6 @@ public class Game_Activity extends AppCompatActivity{
                 startActivity(intent);
             }
         });
-
 
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override

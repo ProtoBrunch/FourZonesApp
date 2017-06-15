@@ -8,19 +8,49 @@
     android:weightSum="1"
     >
 
-    <TextView
-        android:id="@+id/colorBlindTextView"
+    <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:layout_weight="1"
-        android:text="Colorblind friendly"
-        tools:text="Colorblind friendly" />
+        android:columnCount="2"
+        android:rowCount="2">
 
-    <ToggleButton
-        android:id="@+id/colorBlindToggleButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="ToggleButton" />
+        <TextView
+            android:id="@+id/colorBlindTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Colorblind friendly"
+            android:textSize="24sp"
+            tools:text="Colorblind friendly" />
+
+        <ToggleButton
+            android:id="@+id/colorBlindToggleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|top"
+            android:layout_weight="1"
+            android:text="ColorBlind" />
+
+        <TextView
+            android:id="@+id/darkThemeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Dark Theme"
+            android:textSize="24sp"
+            tools:text="Dark Theme" />
+
+        <ToggleButton
+            android:id="@+id/darkTHemeToggleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|top"
+            android:layout_weight="1"
+            android:text="DarkTheme" />
+
+    </GridLayout>
+
 </LinearLayout>
 

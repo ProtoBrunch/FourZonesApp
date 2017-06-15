@@ -17,6 +17,7 @@ public class Main_Activity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main_);
         btn1 = (Button) findViewById(R.id.btn1);
         btn2 = (Button) findViewById(R.id.btn2);
@@ -41,5 +42,9 @@ public class Main_Activity extends Activity {
 
     public void viewSettings(View view){
         startActivity(new Intent(this, Settings_Activity.class));
+    }
+
+    public void viewAbout(View view){
+        //TODO: start new activity
     }
 }
