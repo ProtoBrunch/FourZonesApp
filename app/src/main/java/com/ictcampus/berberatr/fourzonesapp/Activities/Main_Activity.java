@@ -45,6 +45,6 @@ public class Main_Activity extends Activity {
     }
 
     public void viewAbout(View view){
-        //TODO: start new activity
+        startActivity(new Intent(this, About_Activity.class));
     }
 }

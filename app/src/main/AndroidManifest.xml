@@ -30,7 +30,8 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".Activities.Settings_Activity"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
+        <activity android:name=".Activities.About_Activity"></activity>
     </application>
 
 </manifest>

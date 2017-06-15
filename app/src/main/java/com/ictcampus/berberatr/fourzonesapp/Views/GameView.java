@@ -182,8 +182,7 @@ public class GameView extends View implements Runnable {
                 }
             }
             //adapt speed
-            //TODO: add percentages to if/else if
-            if (rectsXPos < 350) {
+            if (rectsXPos < 100) {
                 speed = 34;
             } else if (rectsXPos < (width/3+100)) {
                 speed = 26;
