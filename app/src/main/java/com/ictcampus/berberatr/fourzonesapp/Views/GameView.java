@@ -100,7 +100,7 @@ public class GameView extends View implements Runnable {
         if (touched) {
             rectangle.getPaint().setColor(colors[userColor]);
             rectangle.getPaint().setStyle(Paint.Style.FILL_AND_STROKE);
-            int size = 100;
+            int size = 75;
             userRect = new Rect((int) touchX - size, (int) touchY - size, (int) touchX + size, (int) touchY + size);
             rectangle.setBounds(userRect);
             userRect = rectangle.getBounds();
