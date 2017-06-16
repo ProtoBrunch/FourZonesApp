@@ -1,31 +1,30 @@
-package com.ictcampus.berberatr.fourzonesapp;
+package com.ictcampus.berberatr.fourzonesapp.Activities;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+
+import com.ictcampus.berberatr.fourzonesapp.R;
 
 public class Main_Activity extends Activity {
     Button btn1, btn2;
-    TextView txtView1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main_);
         btn1 = (Button) findViewById(R.id.btn1);
         btn2 = (Button) findViewById(R.id.btn2);
-        txtView1 = (TextView)findViewById(R.id.txtView1);
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo nwi = cm.getActiveNetworkInfo();
         if(nwi != null && nwi.isConnected()){
-            txtView1.setVisibility(View.INVISIBLE);
+
         }
         else{
             btn1.setEnabled(false);
@@ -38,6 +37,14 @@ public class Main_Activity extends Activity {
     }
 
     public void viewData(View view){
-        startActivity(new Intent(this, GetData.class));
+        startActivity(new Intent(this, Highscore_Activity.class));
+    }
+
+    public void viewSettings(View view){
+        startActivity(new Intent(this, Settings_Activity.class));
+    }
+
+    public void viewAbout(View view){
+        startActivity(new Intent(this, About_Activity.class));
     }
 }
