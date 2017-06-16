@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Created by berberatr on 09.06.2017.
+ * Created by berberatr on 16.06.2017.
  */
 
-public class turnStringIntoArrayList {
+public class TurnStringsIntoArrayList {
     String string;
     String[] strings;
     ArrayList<String[]> arrayList = new ArrayList<>();
 
-    public turnStringIntoArrayList(String in){
+    public TurnStringsIntoArrayList(String in){
         this.string = in;
     }
 

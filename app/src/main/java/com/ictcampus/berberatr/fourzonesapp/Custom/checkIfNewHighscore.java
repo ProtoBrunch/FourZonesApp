@@ -70,7 +70,7 @@ public class checkIfNewHighscore extends AsyncTask<String, Void ,Boolean>{
     protected Boolean doInBackground(String... params) {
         try {
             readString(establishConnection());
-            turnStringIntoArrayList tsial = new turnStringIntoArrayList(scoreString);
+            TurnStringsIntoArrayList tsial = new TurnStringsIntoArrayList(scoreString);
             scoreList = tsial.getArrayList();
             newScore = checkAndCompareScores();
             return newScore;

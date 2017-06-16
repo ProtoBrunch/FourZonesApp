@@ -14,9 +14,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.ictcampus.berberatr.fourzonesapp.Custom.TurnStringIntoArrayList;
+import com.ictcampus.berberatr.fourzonesapp.Custom.TurnStringsIntoArrayList;
 import com.ictcampus.berberatr.fourzonesapp.R;
-import com.ictcampus.berberatr.fourzonesapp.Custom.turnStringIntoArrayList;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -69,7 +68,7 @@ public class Highscore_Activity extends Activity {
                     stringBuilder.append(dataString);
                 }
                 Log.d("Check", "gotdata");
-                TurnStringIntoArrayList dad = new TurnStringIntoArrayList(stringBuilder.toString());
+                TurnStringsIntoArrayList dad = new TurnStringsIntoArrayList(stringBuilder.toString());
                 ArrayList<String[]> scores = dad.getArrayList();
                 Log.d("Check", "about to return");
                 return  addRowsToTable(scores);
