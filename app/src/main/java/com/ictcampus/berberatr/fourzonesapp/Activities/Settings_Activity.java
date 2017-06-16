@@ -10,7 +10,7 @@ import com.ictcampus.berberatr.fourzonesapp.R;
 
 public class Settings_Activity extends AppCompatActivity {
 
-    ToggleButton toggleButton;
+    ToggleButton colorBlindToggleButton, darkThemeToggleButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,11 +18,13 @@ public class Settings_Activity extends AppCompatActivity {
 
         setContentView(R.layout.activity_settings_);
 
-        toggleButton = (ToggleButton) findViewById(R.id.colorBlindToggleButton);
         SharedPreferences prefs = getApplicationContext().getSharedPreferences("MyPref", 0);
-        toggleButton.setChecked(prefs.getBoolean("colorBlind", false));
 
-        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        colorBlindToggleButton = (ToggleButton) findViewById(R.id.colorBlindToggleButton);
+
+        colorBlindToggleButton.setChecked(prefs.getBoolean("colorBlind", false));
+        //TODO: add more settings (difficulty...)
+        colorBlindToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
                 SharedPreferences.Editor editor = pref.edit();
@@ -34,6 +36,24 @@ public class Settings_Activity extends AppCompatActivity {
                 editor.apply();
             }
         });
+
+        darkThemeToggleButton = (ToggleButton)findViewById(R.id.darkTHemeToggleButton);
+        darkThemeToggleButton.setChecked(prefs.getBoolean("darkTheme", false));
+
+        darkThemeToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+                if (isChecked) {
+                    editor.putBoolean("darkTheme", true);
+                } else {
+                    editor.putBoolean("darkTheme", false);
+                }
+                editor.apply();
+            }
+        });
+
+
 
     }
 }

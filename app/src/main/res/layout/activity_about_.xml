@@ -3,24 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ictcampus.berberatr.fourzonesapp.Activities.Settings_Activity"
+    tools:context="com.ictcampus.berberatr.fourzonesapp.Activities.About_Activity"
     android:gravity="center_horizontal"
     android:weightSum="1"
     android:orientation="vertical">
+
     <TextView
-        android:id="@+id/settingTextView"
+        android:id="@+id/aboutTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Settings"
+        android:text="About"
         android:textSize="36sp"
-        tools:text="Settings" />
+        tools:text="about" />
 
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_weight="1"
-        android:columnCount="2"
+        android:columnCount="1"
         android:rowCount="2">
 
         <TextView
@@ -28,36 +29,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Colorblind friendly"
+            android:text="Info 1"
             android:textSize="24sp"
-            tools:text="Colorblind friendly" />
-
-        <ToggleButton
-            android:id="@+id/colorBlindToggleButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|top"
-            android:layout_weight="1"
-            android:text="ColorBlind" />
+            tools:text="Info 1" />
 
         <TextView
             android:id="@+id/darkThemeTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Dark Theme"
+            android:text="Info 2"
             android:textSize="24sp"
-            tools:text="Dark Theme" />
-
-        <ToggleButton
-            android:id="@+id/darkTHemeToggleButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|top"
-            android:layout_weight="1"
-            android:text="DarkTheme" />
+            tools:text="Info 2" />
 
     </GridLayout>
-
 </LinearLayout>
-

@@ -19,13 +19,15 @@
     <color name="violet">#7F00FF</color>
     <color name="magenta">#FF00FF</color>
     <color name="black">#000000</color>
+    <color name="lightBlack">#404040</color>
     <color name="gray">#9e9e9e</color>
+    <color name="postYellow">#FFCC00</color>
 
     <array name="normal">
-        <item>@color/red</item>
-        <item>@color/orange</item>
-        <item>@color/green</item>
+        <item>@color/black</item>
         <item>@color/cyan</item>
+        <item>@color/green</item>
+        <item>@color/red</item>
         <item>@color/blue</item>
         <item>@color/gray</item>
     </array>
@@ -33,9 +35,19 @@
     <array name="colorBlind">
         <item>@color/red</item>
         <item>@color/black</item>
-        <item>@color/orange</item>
-        <item>@color/green</item>
+        <item>@color/postYellow</item>
+        <item>@color/spring_green</item>
         <item>@color/blue</item>
+        <item>@color/gray</item>
+    </array>
+
+    <array name="darkTheme">
+        <item>@color/white</item>
+        <item>@color/red</item>
+        <item>@color/magenta</item>
+        <item>@color/postYellow</item>
+        <item>@color/spring_green</item>
+        <item>@color/cyan</item>
         <item>@color/gray</item>
     </array>
 </resources>
